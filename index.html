@@ -1,129 +1,247 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NerooXF | Personal Web</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
     :root {
-      --bg-light: #ffffff;
-      --bg-dark: #1a1a1a;
-      --text-light: #000000;
-      --text-dark: #ffffff;
-      --accent: #7c3aed;
-      --glow: 0 0 15px rgba(124, 58, 237, 0.6);
+      --bg-light: #f3f4ff;
+      --bg-dark: #1c1c3a;
+      --text-light: #2e2e4d;
+      --text-dark: #dcdcff;
+      --accent: #8b5cf6; /* violet neon */
+      --glow: 0 0 20px rgba(139, 92, 246, 0.7);
+      --card-bg-light: #ffffffdd;
+      --card-bg-dark: #2a2a4e;
+      --transition-speed: 0.4s;
     }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-light);
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
       color: var(--text-light);
-      transition: all 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
     }
+
     body.dark {
-      background: var(--bg-dark);
+      background-color: var(--bg-dark);
       color: var(--text-dark);
     }
+
     header {
       text-align: center;
-      padding: 2rem;
+      margin-bottom: 2rem;
+      max-width: 480px;
     }
-    .profile {
-      max-width: 300px;
-      margin: auto;
-      text-align: center;
-    }
+
     .profile img {
-      width: 120px;
+      width: 140px;
       border-radius: 50%;
-      border: 4px solid var(--accent);
+      border: 3px solid var(--accent);
       box-shadow: var(--glow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-    .skills {
-      margin: 2rem auto;
-      max-width: 600px;
+    .profile img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px var(--accent);
     }
+
+    h1 {
+      font-weight: 600;
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      max-width: 400px;
+      margin: auto;
+      color: inherit;
+    }
+
+    .skills, .section {
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 3rem;
+      padding: 0 1rem;
+    }
+
     .skill {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
+
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
     .bar {
       background: #ddd;
-      border-radius: 25px;
+      border-radius: 50px;
       overflow: hidden;
+      height: 24px;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
     }
+
     .bar-inner {
       background: var(--accent);
-      height: 20px;
-      line-height: 20px;
+      height: 100%;
+      line-height: 24px;
       color: white;
-      padding-left: 10px;
-    }
-    .section {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .card {
-      border: 2px solid var(--accent);
-      border-radius: 1rem;
-      padding: 1rem;
-      margin: 1rem 0;
+      padding-left: 15px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 50px 0 0 50px;
       box-shadow: var(--glow);
+      transition: width 1.2s ease;
     }
+
+    .card {
+      background-color: var(--card-bg-light);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid var(--accent);
+      box-shadow: var(--glow);
+      transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    body.dark .card {
+      background-color: var(--card-bg-dark);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+      color: inherit;
+    }
+
+    .contact-buttons {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
     .contact-buttons a {
       display: inline-block;
-      margin: 0.5rem;
-      padding: 0.7rem 1.5rem;
+      margin: 0.6rem;
+      padding: 0.75rem 1.8rem;
       background: var(--accent);
-      color: white;
+      color: #fff;
       border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      transition: transform 0.2s;
-    }
-    .contact-buttons a:hover {
-      transform: scale(1.05);
       box-shadow: var(--glow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      user-select: none;
     }
+
+    .contact-buttons a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px var(--accent);
+    }
+
     .theme-toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      background: none;
+      background: transparent;
       border: none;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      color: var(--accent);
+      transition: color 0.3s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      color: #cbb6f7;
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .skills, .section {
+        padding: 0 0.5rem;
+      }
+      .bar-inner {
+        padding-left: 10px;
+        font-size: 0.8rem;
+      }
+      .contact-buttons a {
+        font-size: 0.9rem;
+        padding: 0.65rem 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">☀️</button>
   <header>
     <div class="profile">
       <img src="https://your-photo-link.com" alt="NerooXF Profile" />
       <h1>NerooXF</h1>
       <p>Hai, aku NerooXF! Seorang digital creator, dev tools enthusiast, dan full-stack builder yang suka eksperimen dan ngulik proyek unik. Welcome to my personal space~ 💜</p>
     </div>
-  </header>  <section class="skills">
+  </header>
+
+  <section class="skills" aria-label="Skill Set">
     <div class="skill">
-      <label>HTML</label>
-      <div class="bar"><div class="bar-inner" style="width: 90%">90%</div></div>
+      <label for="html-skill">HTML</label>
+      <div class="bar" id="html-skill"><div class="bar-inner" style="width: 90%">90%</div></div>
     </div>
     <div class="skill">
-      <label>CSS</label>
-      <div class="bar"><div class="bar-inner" style="width: 85%">85%</div></div>
+      <label for="css-skill">CSS</label>
+      <div class="bar" id="css-skill"><div class="bar-inner" style="width: 85%">85%</div></div>
     </div>
     <div class="skill">
-      <label>JavaScript</label>
-      <div class="bar"><div class="bar-inner" style="width: 80%">80%</div></div>
+      <label for="js-skill">JavaScript</label>
+      <div class="bar" id="js-skill"><div class="bar-inner" style="width: 80%">80%</div></div>
     </div>
     <div class="skill">
-      <label>Node.js</label>
-      <div class="bar"><div class="bar-inner" style="width: 70%">70%</div></div>
+      <label for="node-skill">Node.js</label>
+      <div class="bar" id="node-skill"><div class="bar-inner" style="width: 70%">70%</div></div>
     </div>
     <div class="skill">
-      <label>UI/UX</label>
-      <div class="bar"><div class="bar-inner" style="width: 75%">75%</div></div>
+      <label for="uiux-skill">UI/UX</label>
+      <div class="bar" id="uiux-skill"><div class="bar-inner" style="width: 75%">75%</div></div>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section" aria-label="Products and Services">
     <h2>Produk & Jasa Digital</h2>
     <div class="card">
       <h3>Hosting / Server</h3>
@@ -159,25 +277,32 @@
         <li>Optimasi Website – Rp50.000,00</li>
       </ul>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section" aria-label="Projects and Tools">
     <h2>Project & Tools</h2>
     <div class="card">
       <p>Velvyy Library, VelvyyLang, VelvyXF Protocol, API Generator, AutoMod & AI Tools Showcase</p>
     </div>
-  </section>  <section class="section">
+  </section>
+
+  <section class="section" aria-label="Contact and Social Media">
     <h2>Kontak & Sosial Media</h2>
     <div class="contact-buttons">
-      <a href="https://wa.me/">WhatsApp</a>
-      <a href="https://t.me/">Telegram</a>
-      <a href="https://github.com/">GitHub</a>
-      <a href="https://instagram.com/">Instagram</a>
-      <a href="https://facebook.com/">Facebook</a>
+      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+      <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">Telegram</a>
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
     </div>
-  </section>  <script>
+  </section>
+
+  <script>
     const toggleBtn = document.querySelector('.theme-toggle');
-    toggleBtn.addEventListener('click', () => {
+    function toggleTheme() {
       document.body.classList.toggle('dark');
       toggleBtn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
-    });
-  </script></body>
+    }
+  </script>
+</body>
 </html>
